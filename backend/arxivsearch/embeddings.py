@@ -44,12 +44,7 @@ class Embeddings:
         self.hf_vectorizer = HFTextVectorizer(
             model=config.SENTENCE_TRANSFORMER_MODEL
         )
-        self.oai_vectorizer = OpenAITextVectorizer(
-            model=config.OPENAI_EMBEDDING_MODEL
-        )
-        self.co_vectorizer = CohereTextVectorizer(
-            model=config.COHERE_EMBEDDING_MODEL
-        )
+
 
     async def get(self, provider: str, text: str):
         """
@@ -63,17 +58,5 @@ class Embeddings:
             # Use HuggingFace Sentence Transformer
             return self.hf_vectorizer.embed(
                 text,
-                preprocess=preprocess_text
-            )
-        elif provider == Provider.openai.value:
-            # Use OpenAI Embeddings API
-            return await self.oai_vectorizer.aembed(
-                text,
-                preprocess=preprocess_text
-            )
-        elif provider == Provider.cohere.value:
-            return self.co_vectorizer.embed(
-                text,
-                input_type="search_query",
                 preprocess=preprocess_text
             )
