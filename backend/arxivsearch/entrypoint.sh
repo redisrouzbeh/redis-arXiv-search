@@ -1,5 +1,5 @@
 #!/bin/sh
 
-python load.py
+python myload.py
 
 python main.py
