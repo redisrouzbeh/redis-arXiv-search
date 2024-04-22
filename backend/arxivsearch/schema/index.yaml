@@ -3,7 +3,7 @@ version: '0.1.0'
 index:
   name: arxiv
   prefix: paper
-  storage_type: hash
+  storage_type: json
 
 fields:
   - name: categories
@@ -11,27 +11,25 @@ fields:
     attrs:
       separator: '|'
   - name: year
-    type: tag
-    attrs:
-      separator: '|'
+    type: numeric
   - name: huggingface
     type: vector
     attrs:
       dims: 768
       type: float32
-      algorithm: hnsw
+      algorithm: flat
       distance_metric: cosine
   - name: openai
     type: vector
     attrs:
-      dims: 1536
+      dims: 768
       type: float32
-      algorithm: hnsw
+      algorithm: flat
       distance_metric: cosine
   - name: cohere
     type: vector
     attrs:
-      dims: 1024
+      dims: 768
       type: float32
-      algorithm: hnsw
+      algorithm: flat
       distance_metric: cosine
