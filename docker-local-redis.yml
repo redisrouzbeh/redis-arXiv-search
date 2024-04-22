@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   backend:
-    image: ghcr.io/redisventures/redis-arxiv-search:latest
+    image: vss-search:1.0
     env_file:
       - .env
     expose:
